@@ -30,15 +30,15 @@
     <md-list>
       <h3 md-line>Comments</h3>
       <md-list-item *ngFor="let c of dish.comments">
-      <p md-line>
-        <span>{{c.comment}}</span>
-      </p>
-      <p md-line>
-        <span>{{c.rating}} Stars</span>
-      </p>
-      <p md-line>
+        <p md-line>
+          <span>{{c.comment}}</span>
+        </p>
+        <p md-line>
+          <span>{{c.rating}} Stars</span>
+        </p>
+        <p md-line>
           <span>-- {{c.author}} {{c.date | date}}</span>
-      </p>
+        </p>
       </md-list-item>
     </md-list>
   </div>
