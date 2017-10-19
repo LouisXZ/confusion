@@ -2,14 +2,14 @@
      fxLayout="column"
      fxLayoutGap="10px">
 
-     <div fxFlex>
-       <div>
-         <h3>Menu</h3>
-         <hr>
-       </div>
-     </div>
-     
-     <div fxFlex>
+    <div fxFlex>
+      <div>
+        <h3>Menu</h3>
+        <hr>
+      </div>
+    </div>
+    
+    <div fxFlex>
       <md-grid-list cols="2" rowHeight="200px">
         <md-grid-tile *ngFor="let dish of dishes" (click)="onSelect(dish)">
           <img height="200px" src={{dish.image}} alt={{dish.name}}>
