@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Params, ActivatedRoute } from '@angular/router';
+import { ParamMap, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Dish } from '../shared/dish';
@@ -27,8 +27,8 @@ export class DishdetailComponent implements OnInit {
     this.dishservice.getDishIds()
       .subscribe(dishIds => this.dishIds = dishIds);
 
-    this.route.params
-      .switchMap((params: Params) => this.dishservice.getDish(+params['id']))
+    this.route.paramMap
+      .switchMap((params: ParamMap) => this.dishservice.getDish(+params.get('id')))
       .subscribe((dish) => { this.dish = dish; this.setPrevNext(dish.id)});
   }
 
