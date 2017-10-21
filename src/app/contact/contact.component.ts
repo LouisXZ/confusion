@@ -44,6 +44,7 @@ export class ContactComponent implements OnInit {
       contacttype: "None",
       message: ""
     });
+    
   }
 
 }
