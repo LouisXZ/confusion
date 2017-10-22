@@ -15,6 +15,7 @@ import 'rxjs/add/operator/switchmap';
 })
 export class DishdetailComponent implements OnInit {
 
+  @ViewChild('comForm') comFormDirective;
   dish: Dish;
   dishIds: number[];
   prev: number;
@@ -40,8 +41,6 @@ export class DishdetailComponent implements OnInit {
     },
 
   };
-  
-  @ViewChild('comForm') comFormDirective;
 
   constructor(private dishservice: DishService,
               private route: ActivatedRoute,
@@ -93,14 +92,16 @@ export class DishdetailComponent implements OnInit {
     this.newComment = new Comment();
     const d = new Date();
     const n = d.toISOString();
-    this.newComment['date']= n;
+    this.newComment['date'] = n;
     for (const key in this.commentForm.value) {
       this.newComment[key] = this.commentForm.value[key];
     }
     this.dish.comments.push(this.newComment);
 
     this.comFormDirective.resetForm({
-      rating: 5
+      author: '',
+      rating: 5,
+      comment: ''
     });
   }
 

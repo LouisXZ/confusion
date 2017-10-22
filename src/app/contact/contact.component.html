@@ -47,7 +47,7 @@
 
     <!-- <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p> -->
 
-    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+    <form novalidate #conForm="ngForm" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
       <p>
         <md-input-container class="half-width" 
           dividerColor="{{formErrors.firstname ? 'warn' : 'primary'}}">
