@@ -52,7 +52,42 @@
           <span>-- {{c.author}} {{c.date | date}}</span>
         </p>
       </md-list-item>
+      <md-list-item *ngIf="this.commentForm.status === 'VALID'">
+        <p md-line>
+          <span>{{ this.commentForm.value['comment'] }}</span>
+        </p>
+        <p md-line>
+          <span>{{ this.commentForm.value['rating'] }} Stars</span>
+        </p>
+        <p md-line>
+          <span>-- {{ this.commentForm.value['author' ]}}</span>
+        </p>
+      </md-list-item>
     </md-list>
+
+    <form novalidate #comForm="ngForm" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+        <p>
+          <md-input-container class="full-width">
+            <input mdInput formControlName="author" placeholder="Name" type="text" required>
+            <md-hint>
+              <span [hidden]="!(formErrors.author)">{{formErrors.author}}</span>
+            </md-hint>
+          </md-input-container>
+        </p>
+        <p>
+          <md-slider formControlName="rating" min="1" max="5" step="1" value="5" thumbLabel tickInterval="1"></md-slider>
+        </p>
+        <p>
+         <md-input-container class=full-width>
+           <textarea mdInput formControlName="comment" placeholder="Your Comment" rows=12 type="text" required></textarea>
+           <md-hint>
+              <span [hidden]="!(formErrors.comment)">{{formErrors.comment}}</span>
+            </md-hint>
+         </md-input-container>
+        </p>
+        <button type="submit" md-button class="background-primary text-floral-white"
+          [disabled]="commentForm.invalid">Submit</button>
+    </form>
   </div>
   
 </div>
