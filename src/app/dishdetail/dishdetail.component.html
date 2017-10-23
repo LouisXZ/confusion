@@ -14,7 +14,7 @@
           <h3>{{ dish.name | uppercase }}</h3>
         </md-card-title>
       </md-card-header>
-      <img md-card-image src="{{dish.image}}" alt="{{dish.name}}">
+      <img md-card-image src="{{BaseURL + dish.image}}" alt="{{dish.name}}">
       <md-card-content>
         <p>{{ dish.description }}</p>
       </md-card-content>
@@ -60,7 +60,7 @@
           <span>{{ this.commentForm.value['rating'] }} Stars</span>
         </p>
         <p md-line>
-          <span>-- {{ this.commentForm.value['author' ]}}</span>
+          <span>-- {{ this.commentForm.value['author']}}</span>
         </p>
       </md-list-item>
     </md-list>
