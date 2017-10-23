@@ -7,7 +7,8 @@ import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 import { Comment } from '../shared/comment';
 
-import 'rxjs/add/operator/switchmap';
+import 'rxjs/add/operator/switchMap';
+
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
