@@ -59,7 +59,7 @@ export class DishdetailComponent implements OnInit {
 
     this.route.paramMap
       .switchMap((params: ParamMap) => this.dishservice.getDish(+params.get('id')))
-      .subscribe((dish) => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id)},
+      .subscribe((dish) => {this.dish = dish, this.dishcopy = dish; this.setPrevNext(dish.id)},
         errmess => this.errMess = <any>errmess);
   }
 
@@ -94,12 +94,16 @@ export class DishdetailComponent implements OnInit {
   }
 
   onSubmit() {
+
     this.newComment = this.commentForm.value;
     this.newComment.date = new Date().toISOString();
     this.dishcopy.comments.push(this.newComment);
 
     this.dishcopy.save()
-      .subscribe(dish => this.dish = dish);
+      .subscribe(dish => this.dish = dish,
+        () => {
+          console.log("There was an error saving.");
+      });
 
     this.comFormDirective.resetForm({
       author: '',
