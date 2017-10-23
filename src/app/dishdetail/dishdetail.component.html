@@ -56,7 +56,7 @@
           <span>-- {{c.author}} {{c.date | date}}</span>
         </p>
       </md-list-item>
-      <md-list-item *ngIf="this.commentForm.status === 'VALID'">
+      <md-list-item *ngIf="this.commentForm.valid">
         <p md-line>
           <span>{{ this.commentForm.value['comment'] }}</span>
         </p>
