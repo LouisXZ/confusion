@@ -8,7 +8,7 @@ export class ProcessHTTPMsgService {
   constructor() { }
 
   public extractData(res: Response) {
-    let body = res.json();
+    const body = res.json();
     return body || { };
   }
 
@@ -22,7 +22,6 @@ export class ProcessHTTPMsgService {
     } else {
       errMsg = error.message ? error.message : error.toString();
     }
-    
     return Observable.throw(errMsg);
   }
 }

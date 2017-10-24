@@ -21,7 +21,6 @@ export class ContactComponent implements OnInit {
   feedbackForm: FormGroup;
   feedback: Feedback;
   contactType = ContactType;
-  
   formErrors = {
     'firstname': '',
     'lastname': '',
@@ -54,7 +53,7 @@ export class ContactComponent implements OnInit {
 
   };
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder) {
     this.createForm();
   }
 

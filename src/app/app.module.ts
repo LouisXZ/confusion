@@ -53,8 +53,8 @@ import { HighlightDirective } from './directives/highlight.directive';
     HttpModule,
     RestangularModule.forRoot(RestangularConfigFactory)
   ],
-  providers: [ 
-    DishService, 
+  providers: [
+    DishService,
     PromotionService,
     LeaderService,
     { provide: 'BaseURL', useValue: baseURL },
