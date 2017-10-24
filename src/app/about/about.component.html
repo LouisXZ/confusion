@@ -58,8 +58,7 @@
 
   <div fxFlex>
     <h2>Corporate Leadership</h2>
-    <div *ngIf="leaders">
-      <md-list>
+    <md-list *ngIf="leaders" [@expand]>
         <md-list-item *ngFor="let leader of leaders">
           <img md-list-avatar src={{leader.image}} alt={{leader.name}}>
           <p md-line>
@@ -72,8 +71,7 @@
             <span>{{leader.description}}</span>
           </p>
         </md-list-item>
-      </md-list>
-    </div>
+    </md-list>
     <div [hidden]="leaders">
         <md-spinner></md-spinner>
         <h4>Loading...Please Wait</h4>
