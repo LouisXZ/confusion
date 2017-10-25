@@ -42,15 +42,12 @@
     </div>
   </div>
 
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div fxFlex fxFlexOffset="20px" class="full-width">
     <h3>Send us your Feedback</h3>
 
-    <!-- <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p> -->
-
-    <form novalidate #conForm="ngForm" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+    <form *ngIf="visibility === 'shown'" [@expand] novalidate #conForm="ngForm" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
       <p>
-        <md-input-container class="half-width" 
-          dividerColor="{{formErrors.firstname ? 'warn' : 'primary'}}">
+        <md-input-container class="half-width">
           <input mdInput formControlName="firstname" placeholder="First Name" type="text" required>
           <md-hint>
             <span [hidden]="!(formErrors.firstname)">{{formErrors.firstname}}</span>
@@ -75,11 +72,11 @@
           </md-hint>
         </md-input-container>
       </p>
-      <table class="form-size">
-        <td>
+      <table class="full-width">
+        <td class="half-width">
           <md-slide-toggle formControlName="agree">May we contact you?</md-slide-toggle>
         </td>
-        <td>
+        <td class="half-width">
           <md-select placeholder="How?" formControlName="contacttype">
            <md-option *ngFor="let ctype of contactType" [value]="ctype">
             {{ ctype }}
@@ -95,5 +92,27 @@
       <button type="submit" md-button class="background-primary text-floral-white"
         [disabled]="feedbackForm.invalid">Submit</button>
     </form>
+
+    <div *ngIf="showSubmitting()" [@expand]>
+        <h3>Submitting Form</h3>
+        <md-spinner></md-spinner>
+    </div>
+
+    <div *ngIf="showSubmission()" [@expand]>
+        <h3 md-line>Your Submission</h3>
+        <p md-line><span>First Name: {{feedback.firstname}}</span></p>
+        <p md-line><span>Last Name: {{feedback.lastname}}</span></p>
+        <p md-line><span>Tel. Number: {{feedback.telnum}}</span></p>
+        <p md-line><span>Email: {{feedback.email}}</span></p>
+        <p md-line><span>Contact You?: {{feedback.agree}}</span></p>
+        <p md-line><span>How?: {{feedback.contacttype}}</span></p>
+        <p md-line><span>Feedback: {{feedback.message}}</span></p>
+    </div>
+
+    <div *ngIf="errMess">
+        <h2>Error</h2>
+        <h4>{{errMess}}</h4>
+    </div>
+
   </div>
 </div>

@@ -10,9 +10,8 @@ import { baseURL } from '../shared/baseurl';
 import { Observable } from 'rxjs/Observable';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import 'hammerjs';
-
 import { MenuComponent } from './menu.component';
+import 'hammerjs';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;

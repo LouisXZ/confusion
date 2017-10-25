@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Leader } from '../shared/leader';
 import { LeaderService } from '../services/leader.service';
 import { flyInOut, expand } from '../animations/app.animation';
@@ -7,6 +7,7 @@ import { flyInOut, expand } from '../animations/app.animation';
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
+  // tslint:disable-next-line:use-host-property-decorator
   host: {
     '[@flyInOut]': 'true',
     'style': 'display: block;'
@@ -19,11 +20,15 @@ import { flyInOut, expand } from '../animations/app.animation';
 export class AboutComponent implements OnInit {
 
   leaders: Leader[];
+  leadersErrMess: string;
 
-  constructor(private leaderService: LeaderService) { }
+  constructor(private leaderService: LeaderService,
+    @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
-    this.leaderService.getLeaders().subscribe((leader) => this.leaders = leader);
+    this.leaderService.getLeaders()
+      .subscribe((leader) => this.leaders = leader,
+        errmess => this.leadersErrMess = <any>errmess);
   }
 
 }

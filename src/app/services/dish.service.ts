@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Dish } from '../shared/dish';
-import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-
-import { baseURL } from '../shared/baseurl';
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
 import { RestangularModule, Restangular } from 'ngx-restangular';
 import 'rxjs/add/observable/of';
@@ -29,12 +26,11 @@ export class DishService {
   getFeaturedDish(): Observable<Dish> {
     return this.restangular.all('dishes').getList({featured: true})
       .map(dishes => dishes[0]);
-      
   }
 
   getDishIds(): Observable<number[]> {
     return this.getDishes()
-      .map(dishes => { return dishes.map(dish => dish.id) })
-      .catch(error => { return Observable.of(error); });
+      .map(dishes => dishes.map(dish => dish.id))
+      .catch(error => Observable.of(error));
   }
 }
