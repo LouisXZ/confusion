@@ -1,18 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Promotion } from '../shared/promotion';
 import { Observable } from 'rxjs/Observable';
-import { ProcessHTTPMsgService } from './process-httpmsg.service';
 import { RestangularModule, Restangular } from 'ngx-restangular';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PromotionService {
 
-  constructor(private restangular: Restangular,
-    private processHTTPMsgService: ProcessHTTPMsgService) { }
+  constructor(private restangular: Restangular) { }
 
   gePromotions(): Observable<Promotion[]> {
     return this.restangular.all('promotions').getList();
